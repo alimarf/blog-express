@@ -20,7 +20,10 @@ export class PostController {
   public create = async (req: Request, res: Response) => {
     const post = req["body"] as PostEntity;
     const newPost = await this.postService.create(post);
-    res.send(newPost);
+    res.status(201).send({
+      statusCode: 201,
+      data: newPost,
+    });
   };
 
   public update(req: Request, res: Response) {
