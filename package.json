@@ -2,10 +2,10 @@
   "name": "blog",
   "version": "1.0.0",
   "description": "Blog",
-  "main": "index.ts",
   "scripts": {
     "tsc": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "author": "alim",
   "license": "ISC",
