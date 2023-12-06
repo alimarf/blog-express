@@ -1,6 +1,8 @@
+import 'dotenv/config'
 import express, { Request, Response } from "express";
 import { PostController } from "./controller/post.controller";
 import { createConnection } from "typeorm";
+
 
 class Server {
   private postController: PostController;
@@ -28,14 +30,14 @@ class Server {
   public async routes() {
     await createConnection({
       type: "postgres",
-      host: "localhost",
-      port: 5433,
-      username: "blog",
-      password: "blog",
-      database: "blog",
+      host: process.env.HOST!,
+      port: parseInt(process.env.DB_PORT!),
+      username: process.env.DB_USER!,
+      password: process.env.DB_PASSWORD!,
+      database: process.env.DB_NAME!,
       entities: ["build/database/entities/**/*.js"],
       synchronize: true,
-      name: "blog",
+      name: 'blog',
     });
 
     this.postController = new PostController();
